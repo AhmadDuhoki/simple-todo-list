@@ -1,11 +1,16 @@
-import React from 'react';
-import ToDoList from './components/ToDoList'
+import React, { useState } from 'react';
+import Input from './components/Input'
+import List from './components/List'
 
 function App() {
+  const [list, setList] = useState([])
+  const addItem = (item) => {
+    setList([...list, item])
+  }
   return (
     <>
-      <ToDoList listName="Student" />
-      <ToDoList listName="Instructor" />
+      <Input listName="Student" addItem={addItem} />
+      <List list={list} listName="Student" />
     </>
   );
 }
